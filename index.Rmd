@@ -80,7 +80,7 @@ Librement adapté de https://github.com/wjakethompson/cv
 
 ## Paul Taconet {#title}
 
-### Jeune chercheur en sciences des données
+### Jeune chercheur en sciences des données spatio-temporelles appliquées à l’écologie de la santé et l’épidémiologie
 
 ## Expériences professionnelles {data-icon="suitcase"}
 
@@ -204,7 +204,7 @@ N/A
 ### Géomatique:
 
 - Cartographie (QGIS, R)
-- Télédétéction (OTB, SAGA, GRASS GIS, R)
+- Télédétection (OTB, SAGA, GRASS GIS, R)
 - Recueil de données terrain (QField)
 
 N/A
@@ -352,7 +352,6 @@ N/A
 
 - **Presentation R package `thesisdown`** (2022, Avril). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://drive.google.com/file/d/1vg-wVcK4Xia617EHJFuk_Eml75opPFgm/view?usp=sharing)
 - **Modélisation des résistances comportementales des vecteurs du paludisme en conditions de terrain**. (2021, Novembre). Groupe Comportement, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/1W_Ip6IqCCF2OiN4IaJbVMxdqEzJUeYJG7iLTZNOYXkY/edit?usp=sharing)
-- **Modélisation explicative de la niche écologique des vecteurs du paludisme à l’aide de méthodes d’apprentissage automatique**. (2021, Mars). Journée scientifique IA et biodiversité – LabEx Cemeb NUMEV [[présentation]](https://docs.google.com/presentation/d/1bhJar5oppCqQFRGN5uy7Qgw_oACnbu70GcTAkSqXueA/edit?usp=sharing)
 - **La contribution FAO/IRD sur les atlas thoniers: vers un meilleur usage des données de pêche**. (2020, Novembre). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/17qX84CEtgBKsMt4O5Udrw239yUQPuB6coch8MSaXkrE/edit?usp=sharing)
 - **Quelques bonnes pratiques pour la gestion des données de recherche**. (2019, Décembre). Workshop de l’équipe Infectivité de l’Unité Paludisme, Institut de Recherche en Sciences de la Santé (IRSS), Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1ibl7yAOJrW7eRZ17MECV7rf3B-2zkBNFW-Btg_oJgKQ/edit?usp=sharing)
 - **Science ouverte : petit tour d’horizon**. (2019, Octobre). Conférences des vendredi de l'IRSS, Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1VM8AbczEYPjPGDbnqVwDLQ8kOgYlYBm0BicTacCEYpU/edit?usp=sharing)
