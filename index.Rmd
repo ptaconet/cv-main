@@ -1,0 +1,365 @@
+---
+title: "CV de Paul Taconet"
+author: P. Taconet
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles.css', 'resume']
+    self_contained: false
+knit: pagedown::chrome_print
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  results = "asis", 
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+
+library(tidyverse)
+library(readxl)
+library(magick)
+library(glue)
+library(janitor)
+library(bib2df)
+
+source("parse-citations.R")
+```
+
+```{css, echo=FALSE}
+.pagedjs_page:not(:first-of-type) {
+  --sidebar-width: 0rem;
+  --sidebar-background-color: #ffffff;
+  --main-width: calc(var(--content-width) - var(--sidebar-width));
+  --decorator-horizontal-margin: 0.2in;
+}
+```
+
+# Aside
+
+```{r logo, warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", out.width="70%"}
+logo <- image_read("photo_ptaconet.jpeg")
+logo
+```
+
+## Contact {#contact}
+- Adresse : 719 rue de Las Sorbes <br> Bat. D Apt. 1, 34070 Montpellier
+-   <i class="fa fa-envelope"></i> [paul.taconet\@gmail.com](mailto:paul.taconet@gmail.com){.email}
+<!-- -   <i class="fa fa-link"></i> [wjakethompson.com](https://wjakethompson.com) -->
+-   <i class="fa fa-github"></i> [\@ptaconet](https://github.com/ptaconet)
+-   <i class="fab fa-researchgate"></i> [\Paul Taconet](https://www.researchgate.net/profile/Paul-Taconet-2)
+-   <i class="fa fa-twitter"></i> [\@ptaconet](https://twitter.com/ptaconet)
+
+## {#skills}
+
+**Langues:**
+
+  - Anglais: courant
+  - Italien: courant
+  - Espagnol: courant
+
+**Expériences d'expatriation:**
+
+  - Burkina Faso (2 ans - VIA)
+  - Ile de la Réunion (2 ans - VSC)
+  - Italie (9 ans - collège et lycée)
+  - Maroc (4 ans - école primaire)
+
+**Autres:**
+
+  - Sports : alpinisme, voile, course à pied, ski de randonnée
+  - Associations : formateur à la "Fresque du climat"
+
+## Disclaimer {#disclaimer}
+
+Réalisé avec la librairie R [pagedown](https://github.com/rstudio/pagedown)
+Librement adapté de https://github.com/wjakethompson/cv
+
+# Main
+
+## Paul Taconet {#title}
+
+### Jeune chercheur en sciences des données
+
+## Expériences professionnelles {data-icon="suitcase"}
+
+```{r print-emp}
+emp_data <- read_xlsx("cv-data.xlsx", sheet = "employment2")
+
+emp_data %>% 
+    arrange(desc(end)) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{main_description}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n\n",
+    )
+```
+
+## Formation {data-icon="graduation-cap" data-concise="true"}
+
+```{r print-edu}
+edu_data <- read_xlsx("cv-data.xlsx", sheet = "education")
+
+edu_data %>% 
+    arrange(desc(end)) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{main_description}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n\n",
+    )
+```
+
+## Compétences en ingéniérie et science des données {data-icon="data"}
+
+### Langages de programmation:
+
+- R : confirmé
+- SQL : confirmé
+- PHP : intermédiaire
+- Shell : intermédiaire
+
+N/A
+
+### Ingéniérie des données:
+
+- Conception et développement de bases de données géographiques (PostgreSQL + PostGIS, Geopackage)
+- Développement de librairies R, "versionning" de code (Git)
+- Maitrise des normes ISO liées aux données et métadonnées géographiques (ISO 19110 / 19115 / 19119)
+- Maîtrise des standards de l'Open Geospatial Consortium (WMS, WFS, WPS, CSW)
+
+N/A
+
+### Science des données :
+
+- Extraction et combinaison de données hétérogènes multisources
+- Développement de "pipelines" de traitement de données (extraction, transformation, modélisation, visualisation, valorisation FAIR)
+- Maitrise des modèles paramétriques (modèles linéaires mixtes généralisés) et non-paramétriques (forêts aléatoires, XGBoost, etc.)
+- Maitrise des outils d'interprétation des modèles d'apprentissage automatique (*interpretable machine learning*)
+
+N/A
+
+### Géomatique:
+
+- Cartographie (QGIS, R)
+- Télédétéction (OTB, SAGA, GRASS GIS, R)
+- Recueil de données terrain (QField)
+
+N/A
+
+## Publications à comité de lecture {data-icon="book"}
+
+```{r print-pub}
+format_bib("bib/pubs.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+\pagebreak
+
+## Actes de colloque {data-icon="file-alt"}
+
+```{r print-tech}
+format_bib("bib/tech.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+## Communications à des colloques internationaux et nationaux {data-icon="users"}
+
+```{r print-conf}
+format_bib("bib/conf.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  separate(eventdate, c("year", "month", "day", NA, NA, "end_day"),
+           fill = "right", extra = "drop", convert = TRUE) %>%
+  arrange(desc(year), desc(month), desc(day), desc(end_day), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+
+## Autres productions et activités scientifiques {data-icon="handshake"}
+
+### Sciences ouvertes
+
+- Développement de la **librairie R `opendapr`** : *Fast Download of many Earth Observation Data in R using the OPeNDAP Capacities* (2019) [[GitHub]](https://github.com/ptaconet/opendapr)
+- Rédaction d'un retour d'experience sur l'application QField (application open-source de collecte de données spatialisées) (2018) [[lien]](https://docs.qfield.org/case-studies/mosquito-malario-ground-truth-data-collection/)
+- **Publication des données de l'atlas thonier mondial** en open-access (2018) [[jeu de données n°1]](https://doi.org/10.5281/zenodo.1164128) [[jeu de données n°2]](https://doi.org/10.5281/zenodo.1165992) 
+- Développement de la **librairie R `rtunaatlas`** : *Scripts to handle the public domain datasets of the 5 tuna RFMOs* (2017) [[GitHub]](https://github.com/ptaconet/rtunaatlas)
+
+
+N/A
+
+### Enseignement, Formation
+
+- A venir (octobre-novembre 2022) : Cours magistraux et travaux dirigés en géomatique à l'Université Paul-Valéry - Montpellier 3 (Masters "Geomatique" et "Gestion de l'Environnement")
+- Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : Master 2 et doctorants
+- Rédaction d'un **Tutoriel d'initiation à la télédétection spatiale sur logiciel libre**. (2019). [[PDF]](https://doi.org/10.13140/RG.2.2.16391.06569)
+
+N/A
+
+### Webinaires
+
+- **Managing tuna fisheries data at a global scale : the Tuna Atlas VRE**. (2018) Webinaire délivré dans le cadre du projet européen H2020 BlueBRIDGE. [[Vidéo]](https://www.youtube.com/watch?v=ZgxJO-0wXAk&t=1807s)
+
+N/A
+
+### Animation scientifique
+
+- Co-organisation du séminaire **"Models in Ecology and Evolution"**. (Montpellier, 2022) 40 participants. [[site internet]](https://meeseminar2022.netlify.app/about/)
+
+N/A
+
+### Encadrement
+
+- **Tenimba Diarra**, co-encadrement, stage de Master 2 (Université de Montpellier, Master Données Santé, Biostatistiques). (Montpellier, 2022)
+- **Chloé Dalleau**, encadrement principal, stage de fin d'étude d'ingénieur (Montpellier SupAgro, spécialité AgroTIC). (Sète, 2017)
+
+N/A
+
+### Relectures de publications
+
+-   ICES Journal of Marine Science (2017)
+
+N/A
+
+### Bourses
+
+- Bourse RIVE / RIVOC - financement pour participation au congrés [European Society of Vector Ecology 2022 The 22nd Conference](https://www.sove.org/european-sove) (ESOVE 2022) 
+
+N/A
+
+### Contributions à des projets annexes
+
+- COheSIoN (IRD MIVEGEC) : cartographie d’occupation du sol à partir d’images de drône (recyclage de codes R générés pour les besoins de ma thèse)
+- MovBio (CNRS MIVEGEC / CEFE) : développement d’un algorithme de classification et dénombrement automatique de graines (support photographique)
+- Atlas thonier français (IRD MARBEC). Recyclage du travail de l'atlas thonier mondial (codes R, modèle de base de données) pour les mêmes besoins sur les données des pêcheries thonières françaises
+
+N/A
+
+### Communications à des séminaires d'unité ou équivalents
+
+- **Presentation R package `thesisdown`** (2022, Avril). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://drive.google.com/file/d/1vg-wVcK4Xia617EHJFuk_Eml75opPFgm/view?usp=sharing)
+- **Modélisation des résistances comportementales des vecteurs du paludisme en conditions de terrain**. (2021, Novembre). Groupe Comportement, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/1W_Ip6IqCCF2OiN4IaJbVMxdqEzJUeYJG7iLTZNOYXkY/edit?usp=sharing)
+- **Modélisation explicative de la niche écologique des vecteurs du paludisme à l’aide de méthodes d’apprentissage automatique**. (2021, Mars). Journée scientifique IA et biodiversité – LabEx Cemeb NUMEV [[présentation]](https://docs.google.com/presentation/d/1bhJar5oppCqQFRGN5uy7Qgw_oACnbu70GcTAkSqXueA/edit?usp=sharing)
+- **La contribution FAO/IRD sur les atlas thoniers: vers un meilleur usage des données de pêche**. (2020, Novembre). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/17qX84CEtgBKsMt4O5Udrw239yUQPuB6coch8MSaXkrE/edit?usp=sharing)
+- **Quelques bonnes pratiques pour la gestion des données de recherche**. (2019, Décembre). Workshop de l’équipe Infectivité de l’Unité Paludisme, Institut de Recherche en Sciences de la Santé (IRSS), Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1ibl7yAOJrW7eRZ17MECV7rf3B-2zkBNFW-Btg_oJgKQ/edit?usp=sharing)
+- **Science ouverte : petit tour d’horizon**. (2019, Octobre). Conférences des vendredi de l'IRSS, Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1VM8AbczEYPjPGDbnqVwDLQ8kOgYlYBm0BicTacCEYpU/edit?usp=sharing)
+- **Improve the collection of field geographic data with QField for QGIS**. (2019, Mars). Institut de l'Environnement et de Recherches Agricoles (INERA), Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1aB8Wt_j6O5fYBJmtcI-Dwl7Z4TWFLqyEFh9PjbDfF44/edit?usp=sharing)
+- **La contribution IRD / FAO sur les atlas thoniers : vers  un meilleur usage des données de pêche**. (2017, Novembre). Conférences des jeudi de l’UMR Marbec, Sète [[présentation]](https://docs.google.com/presentation/d/12bvPeuH2JakyKtNK5e1AE0WIgYnlXTPOpiBln1mzeZs/edit?usp=sharing)
+- **Données / outils / produits : cas de l’observatoire  thonier**. (2016, Novembre). Module d’enseignement sur l’approche écosystémique des ressources marines exploitées, Sète.
+- **Global database and common toolbox for tuna fisheries** (2016, Décembre). Conférences des jeudi de l’UMR Marbec, Sète
+
+N/A
+
