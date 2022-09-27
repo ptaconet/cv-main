@@ -44,7 +44,8 @@ logo
 ```
 
 ## Contact {#contact}
-- Adresse : 719 rue de Las Sorbes <br> Bat. D Apt. 1, 34070 Montpellier
+-   <i class="fa fa-home"></i> 719 rue de Las Sorbes, Bat. D Apt. 1 <br> 34070 Montpellier
+-   <i class="fa fa-phone"></i> 06 95 46 53 49
 -   <i class="fa fa-envelope"></i> [paul.taconet\@gmail.com](mailto:paul.taconet@gmail.com){.email}
 <!-- -   <i class="fa fa-link"></i> [wjakethompson.com](https://wjakethompson.com) -->
 -   <i class="fa fa-github"></i> [\@ptaconet](https://github.com/ptaconet)
@@ -172,7 +173,7 @@ edu_data %>%
     )
 ```
 
-## Compétences en ingéniérie et science des données {data-icon="data"}
+## Compétences en ingéniérie et science des données {data-icon="key"}
 
 ### Langages de programmation:
 
@@ -195,7 +196,7 @@ N/A
 ### Science des données :
 
 - Extraction et combinaison de données hétérogènes multisources
-- Développement de "pipelines" de traitement de données (extraction, transformation, modélisation, visualisation, valorisation FAIR)
+- Développement de chaines de traitement de données (extraction, transformation, modélisation, visualisation, valorisation FAIR)
 - Maitrise des modèles paramétriques (modèles linéaires mixtes généralisés) et non-paramétriques (forêts aléatoires, XGBoost, etc.)
 - Maitrise des outils d'interprétation des modèles d'apprentissage automatique (*interpretable machine learning*)
 
@@ -209,10 +210,35 @@ N/A
 
 N/A
 
-## Publications à comité de lecture {data-icon="book"}
+## Publications à comité de lecture, auteur principal {data-icon="book"}
 
 ```{r print-pub}
-format_bib("bib/pubs.bib") %>%
+format_bib("bib/pubs_firstauthor.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+## Publications à comité de lecture, co-auteur {data-icon="book"}
+
+```{r print-pub2}
+format_bib("bib/pubs_coauthor.bib") %>%
   mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
          author = map_chr(author, all_authors),
          year = as.integer(year),
@@ -291,21 +317,25 @@ format_bib("bib/conf.bib") %>%
 
 ## Autres productions et activités scientifiques {data-icon="handshake"}
 
-### Sciences ouvertes
+### Librairies R 
 
 - Développement de la **librairie R `opendapr`** : *Fast Download of many Earth Observation Data in R using the OPeNDAP Capacities* (2019) [[GitHub]](https://github.com/ptaconet/opendapr)
-- Rédaction d'un retour d'experience sur l'application QField (application open-source de collecte de données spatialisées) (2018) [[lien]](https://docs.qfield.org/case-studies/mosquito-malario-ground-truth-data-collection/)
-- **Publication des données de l'atlas thonier mondial** en open-access (2018) [[jeu de données n°1]](https://doi.org/10.5281/zenodo.1164128) [[jeu de données n°2]](https://doi.org/10.5281/zenodo.1165992) 
 - Développement de la **librairie R `rtunaatlas`** : *Scripts to handle the public domain datasets of the 5 tuna RFMOs* (2017) [[GitHub]](https://github.com/ptaconet/rtunaatlas)
 
+N/A
+
+### Sciences ouvertes
+
+- **Rédaction d'un Tutoriel d'initiation à la télédétection spatiale sur logiciel libre**. (2019) [[PDF]](https://doi.org/10.13140/RG.2.2.16391.06569)
+- **Publication des données de l'Atlas thonier mondial** en open-access (2018) [[jeu de données n°1]](https://doi.org/10.5281/zenodo.1164128) [[jeu de données n°2]](https://doi.org/10.5281/zenodo.1165992) 
+- Rédaction d'un retour d'experience sur l'application QField (application open-source de collecte de données spatialisées) (2018) [[lien]](https://docs.qfield.org/case-studies/mosquito-malario-ground-truth-data-collection/)
 
 N/A
 
 ### Enseignement, Formation
 
+- Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : étudiants de Master 2 et doctorants
 - A venir (octobre-novembre 2022) : Cours magistraux et travaux dirigés en géomatique à l'Université Paul-Valéry - Montpellier 3 (Masters "Geomatique" et "Gestion de l'Environnement")
-- Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : Master 2 et doctorants
-- Rédaction d'un **Tutoriel d'initiation à la télédétection spatiale sur logiciel libre**. (2019). [[PDF]](https://doi.org/10.13140/RG.2.2.16391.06569)
 
 N/A
 
@@ -336,15 +366,7 @@ N/A
 
 ### Bourses
 
-- Bourse RIVE / RIVOC - financement pour participation au congrés [European Society of Vector Ecology 2022 The 22nd Conference](https://www.sove.org/european-sove) (ESOVE 2022) 
-
-N/A
-
-### Contributions à des projets annexes
-
-- COheSIoN (IRD MIVEGEC) : cartographie d’occupation du sol à partir d’images de drône (recyclage de codes R générés pour les besoins de ma thèse)
-- MovBio (CNRS MIVEGEC / CEFE) : développement d’un algorithme de classification et dénombrement automatique de graines (support photographique)
-- Atlas thonier français (IRD MARBEC). Recyclage du travail de l'atlas thonier mondial (codes R, modèle de base de données) pour les mêmes besoins sur les données des pêcheries thonières françaises
+- Bourse RIVOC - financement pour participation au congrés [European Society of Vector Ecology 2022 The 22nd Conference](https://www.sove.org/european-sove) (ESOVE 2022) 
 
 N/A
 
@@ -359,6 +381,14 @@ N/A
 - **La contribution IRD / FAO sur les atlas thoniers : vers  un meilleur usage des données de pêche**. (2017, Novembre). Conférences des jeudi de l’UMR Marbec, Sète [[présentation]](https://docs.google.com/presentation/d/12bvPeuH2JakyKtNK5e1AE0WIgYnlXTPOpiBln1mzeZs/edit?usp=sharing)
 - **Données / outils / produits : cas de l’observatoire  thonier**. (2016, Novembre). Module d’enseignement sur l’approche écosystémique des ressources marines exploitées, Sète.
 - **Global database and common toolbox for tuna fisheries** (2016, Décembre). Conférences des jeudi de l’UMR Marbec, Sète
+
+N/A
+
+### Contributions à des projets annexes
+
+- COheSIoN (IRD MIVEGEC) : cartographie d’occupation du sol à partir d’images de drône (recyclage de codes R générés pour les besoins de ma thèse)
+- MovBio (CNRS MIVEGEC / CEFE) : développement d’un algorithme de classification et dénombrement automatique de graines (support photographique)
+- Atlas thonier français (IRD MARBEC). Recyclage du travail de l'atlas thonier mondial (codes R, modèle de base de données) pour les mêmes besoins sur les données des pêcheries thonières françaises
 
 N/A
 
