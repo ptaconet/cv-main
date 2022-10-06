@@ -334,8 +334,8 @@ N/A
 
 ### Enseignement, Formation
 
-- Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : étudiants de Master 2 et doctorants
 - A venir (octobre-novembre 2022) : Cours magistraux et travaux dirigés en géomatique à l'Université Paul-Valéry - Montpellier 3 (Masters "Geomatique" et "Gestion de l'Environnement")
+- Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : étudiants de Master 2 et doctorants
 
 N/A
 
@@ -360,8 +360,8 @@ N/A
 
 ### Relectures de publications
 
--   ICES Journal of Marine Science (2017)
 -   Infectious Diseases of Poverty (2022)
+-   ICES Journal of Marine Science (2017)
 
 N/A
 
