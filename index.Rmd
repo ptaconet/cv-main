@@ -326,7 +326,7 @@ N/A
 
 ### Sciences ouvertes
 
-- **Rédaction d'un Tutoriel d'initiation à la télédétection spatiale sur logiciel libre**. (2019) [[PDF]](https://doi.org/10.13140/RG.2.2.16391.06569)
+- **Rédaction d'un Tutoriel d'initiation à la télédétection spatiale sur logiciel libre**. (2019) [[PDF]](https://doi.org/10.5281/zenodo.7224864)
 - **Publication des données de l'Atlas thonier mondial** en open-access (2018) [[jeu de données n°1]](https://doi.org/10.5281/zenodo.1164128) [[jeu de données n°2]](https://doi.org/10.5281/zenodo.1165992) 
 - Rédaction d'un retour d'experience sur l'application QField (application open-source de collecte de données spatialisées) (2018) [[lien]](https://docs.qfield.org/case-studies/mosquito-malario-ground-truth-data-collection/)
 
@@ -334,7 +334,7 @@ N/A
 
 ### Enseignement, Formation
 
-- A venir (octobre-novembre 2022) : Cours magistraux et travaux dirigés en géomatique à l'Université Paul-Valéry - Montpellier 3 (Masters "Geomatique" et "Gestion de l'Environnement")
+- Vacations enseignement en géomatique à l'Université Paul-Valéry-Montpellier 3 (Master 1 "Gestion de l'Environnement" et Master 2 "Geomatique") (Montpellier, 2022) 7 heures (TD et CM). 
 - Formation : **Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox**. (Bobo-Dioulasso, 2019) 25 heures, cible : étudiants de Master 2 et doctorants
 
 N/A
