@@ -1,4 +1,1 @@
-chrome_print("/home/ptaconet/cv-main/index.Rmd")
-
-
-Burkina Faso (2 ans), île de la Réunion (2 ans), Italie (9 ans), Maroc (4 ans)
+My CV (as of 2022), made with the R package [pagedown](https://github.com/rstudio/pagedown) and freely adapted from https://github.com/wjakethompson/cv
