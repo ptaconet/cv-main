@@ -178,20 +178,22 @@ edu_data %>%
 
 ### Langages de programmation:
 
-- R : confirmé
-- SQL : confirmé
+- **R : confirmé** (voir [dépôt GitHub](https://github.com/ptaconet)). Libraires types maîtrisées : développement de librairies R ([`usethis`](https://cran.r-project.org/web/packages/usethis/index.html)), manipulation de données tabulaires ([`dplyr`](https://cran.r-project.org/web/packages/dplyr/index.html), [`tidyr`](https://cran.r-project.org/web/packages/tidyr/index.html), [`lubridate`](https://cran.r-project.org/web/packages/lubridate/index.html), [`stringr`](https://cran.r-project.org/web/packages/stringr/index.html), [`tibble`](https://cran.r-project.org/web/packages/tibble/index.html), [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html)), manipulation de données spatiales ([`sf`](https://cran.r-project.org/web/packages/sf/index.html), [`terra`](https://cran.r-project.org/web/packages/terra/index.html), [`stars`](https://cran.r-project.org/web/packages/stars/index.html)), visualisation ([`ggplot2`](https://cran.r-project.org/web/packages/ggplot2/index.html), [`patchwork`](https://cran.r-project.org/web/packages/patchwork/index.html), [`GGally`](https://cran.r-project.org/web/packages/GGally/index.html)), cartographie ([`ggmap`](https://cran.r-project.org/web/packages/ggmap/index.html), [`tmap`](https://cran.r-project.org/web/packages/tmap/index.html)), programmation fonctionnelle ([`purrr`](https://cran.r-project.org/web/packages/purrr/index.html)), gestion de bases de données ([`DBI`](https://cran.r-project.org/web/packages/DBI/index.html)), biostatistiques ([`glmmTMB`](https://cran.r-project.org/web/packages/glmmTMB/index.html)), machine learning ([`caret`](https://cran.r-project.org/web/packages/caret/index.html), [`ranger`](https://cran.r-project.org/web/packages/ranger/index.html), [`randomForest`](https://cran.r-project.org/web/packages/randomForest/index.html)), *interpretable machine learning* ([`iml`](https://cran.r-project.org/web/packages/iml/index.html), [`pdp`](https://cran.r-project.org/web/packages/pdp/index.html), [`vip`](https://cran.r-project.org/web/packages/vip/index.html)), programmation lettrée ([`bookdown`](https://cran.r-project.org/web/packages/bookdown/index.html)), parallélisation ([`furrr`](https://cran.r-project.org/web/packages/furrr/index.html)).
+- R Markdown : confirmé (voir [manuscrit de thèse](https://github.com/ptaconet/phd_thesis) et [supports pédagogiques rédigés](https://doi.org/10.5281/zenodo.7380029))
+- SQL : confirmé (voir par exemple [ces travaux](https://github.com/ptaconet/r_sql_datawarehouse))
 - PHP : intermédiaire
-- Shell : intermédiaire
+- Bash : intermédiaire
 
 N/A
 
 ### Ingéniérie des données:
 
-- Conception et développement de bases de données géographiques et d'infrastructures de données spatiales dans le domaine de la bio-écologie et épidémiologie (ex: PostgreSQL + PostGIS)
+- Conception et développement de bases de données géographiques et d'infrastructures de données spatiales dans le domaine de la bio-écologie et de l'épidémiologie (ex: PostgreSQL + PostGIS)
 - Compétences en Langages de programmation scientifiques (SQL, R) pour la gestion et le traitement de données, notamment spatiales
 - Maîtrise des normes pour l’interopérabilité de données spatiales (standards OGC), maîtrise des formats de référence pour les métadonnées et les données biologiques spatialisées (Darwin Core, EML)
 - Connaissance des standard de service web dédiés à la publication de données spatialisées (CSW, WMS, WFS/WCS)
 - Développement de chaines de traitement de données complexes (extraction, transformation, modélisation, visualisation, valorisation FAIR)
+- Versionnage des codes et forges logicielles (Git)
 
 N/A
 
@@ -201,13 +203,14 @@ N/A
 - Modélisation statistique paramétrique (modèles linéaires mixtes généralisés) (modélisation explicative)
 - Modélisation statistique non-paramétrique (*machine learning*) (forêts aléatoires, XGBoost, SVM, etc.) (modélisation exploratoire et prédictive)
 - Maitrise des outils d'interprétation des modèles de *machine learning* (*interpretable machine learning*)
+- Visualisation de données
 
 N/A
 
 ### Géomatique :
 
 - Cartographie (QGIS, R)
-- Télédétection (OTB, SAGA, GRASS GIS, R)
+- Télédétection, cubes spatio-temporels d'observation de la Terre (OTB, SAGA, GRASS GIS, R)
 - Recueil de données terrain (QField)
 
 N/A
@@ -362,6 +365,19 @@ N/A
 
 N/A
 
+### Encadrement
+
+- Tenimba Diarra, co-encadrement, stage de Master 2 (Université de Montpellier, Master Données Santé, Biostatistiques). (Montpellier, 2022). Sujet de stage : *Modélisation de l’agressivité horaire des moustiques vecteurs du paludisme en fonction de variables micro-environnementales et méthodes de lutte antivectorielle*
+- Chloé Dalleau, encadrement principal, stage de fin d'étude d'ingénieur (Montpellier SupAgro, spécialité AgroTIC). (Sète, 2017). Sujet de stage : *Proposition de méthodes de rasterisation des données de la pêcherie thonière*
+
+N/A
+
+### Webinaires
+
+- ***Managing tuna fisheries data at a global scale : the Tuna Atlas VRE***. (2018) Webinaire délivré dans le cadre du projet européen H2020 BlueBRIDGE. [[Vidéo]](https://www.youtube.com/watch?v=ZgxJO-0wXAk&t=1807s)
+
+N/A
+
 ### Relectures de publications scientifiques
 
 -   International Journal of Health Geographics (2024)
@@ -374,19 +390,6 @@ N/A
 -   Asian Pacific Journal of Tropical Medicine (2023)
 -   Infectious Diseases of Poverty (2022)
 -   ICES Journal of Marine Science (2017)
-
-N/A
-
-### Encadrement
-
-- Tenimba Diarra, co-encadrement, stage de Master 2 (Université de Montpellier, Master Données Santé, Biostatistiques). (Montpellier, 2022). Sujet de stage : *Modélisation de l’agressivité horaire des moustiques vecteurs du paludisme en fonction de variables micro-environnementales et méthodes de lutte antivectorielle*
-- Chloé Dalleau, encadrement principal, stage de fin d'étude d'ingénieur (Montpellier SupAgro, spécialité AgroTIC). (Sète, 2017). Sujet de stage : *Proposition de méthodes de rasterisation des données de la pêcherie thonière*
-
-N/A
-
-### Webinaires
-
-- ***Managing tuna fisheries data at a global scale : the Tuna Atlas VRE***. (2018) Webinaire délivré dans le cadre du projet européen H2020 BlueBRIDGE. [[Vidéo]](https://www.youtube.com/watch?v=ZgxJO-0wXAk&t=1807s)
 
 N/A
 
