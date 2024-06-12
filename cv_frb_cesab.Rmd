@@ -1,0 +1,415 @@
+---
+title: "CV de Paul Taconet"
+author: P. Taconet
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles.css', 'resume']
+    self_contained: false
+knit: pagedown::chrome_print
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  results = "asis", 
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+
+library(tidyverse)
+library(readxl)
+library(magick)
+library(glue)
+library(janitor)
+library(bib2df)
+
+source("parse-citations.R")
+```
+
+```{css, echo=FALSE}
+.pagedjs_page:not(:first-of-type) {
+  --sidebar-width: 0rem;
+  --sidebar-background-color: #ffffff;
+  --main-width: calc(var(--content-width) - var(--sidebar-width));
+  --decorator-horizontal-margin: 0.2in;
+}
+```
+
+# Aside
+
+```{r logo, warning = FALSE, message = FALSE, error = FALSE, fig.align = "center", out.width="70%"}
+logo <- image_read("photo_ptaconet.jpeg")
+logo
+```
+
+## Contact {#contact}
+-   <i class="fa fa-home"></i> 136 rue Buffon, Bât. C <br> 34070 Montpellier
+-   <i class="fa fa-phone"></i> 06 95 46 53 49
+-   <i class="fa fa-envelope"></i> [paul.taconet\@gmail.com](mailto:paul.taconet@gmail.com){.email}
+<!-- -   <i class="fa fa-link"></i> [wjakethompson.com](https://wjakethompson.com) -->
+-   <i class="fa fa-github"></i> [\@ptaconet](https://github.com/ptaconet)
+-   <i class="fab fa-researchgate"></i> [\Paul Taconet](https://www.researchgate.net/profile/Paul-Taconet-2)
+-   <i class="fa fa-twitter"></i> [\@ptaconet](https://twitter.com/ptaconet)
+
+## {#skills}
+
+**Langues:**
+
+  - Anglais: courant
+  - Italien: courant
+  - Espagnol: courant
+
+**Expériences d'expatriation:**
+
+  - Nouvelle Calédonie (7 mois)
+  - Burkina Faso (2 ans - VIA)
+  - Ile de la Réunion (2 ans - VSC)
+  - Italie (9 ans - collège et lycée)
+  - Maroc (4 ans - école primaire)
+
+**Autres:**
+
+  - Sports : alpinisme, voile, course à pied, ski de randonnée
+  - Associations : formateur à la "Fresque du climat"
+
+## Disclaimer {#disclaimer}
+
+Réalisé avec la librairie R [pagedown](https://github.com/rstudio/pagedown)
+Librement adapté de https://github.com/wjakethompson/cv
+
+# Main
+
+## Paul Taconet {#title}
+
+### Scientifique des géo-données appliqué à la bio-écologie
+
+## Expériences professionnelles {data-icon="suitcase"}
+
+```{r print-emp}
+emp_data <- read_xlsx("cv-data.xlsx", sheet = "employment_cv_ird_postdoc_2024")
+
+emp_data %>% 
+    arrange(desc(end)) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{main_description}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n\n"
+    )
+```
+
+## Formation {data-icon="graduation-cap" data-concise="true"}
+
+```{r print-edu}
+edu_data <- read_xlsx("cv-data.xlsx", sheet = "education_2")
+
+edu_data %>% 
+    arrange(desc(end)) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{main_description}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n\n"
+    )
+```
+
+## Compétences en ingéniérie et science des données {data-icon="key"}
+
+### Langages de programmation:
+
+- R : confirmé
+- SQL : confirmé
+- PHP : intermédiaire
+- Shell : intermédiaire
+
+N/A
+
+### Ingéniérie des données:
+
+- Conception et développement de bases de données géographiques et d'infrastructures de données spatiales dans le domaine de la bio-écologie et épidémiologie (ex: PostgreSQL + PostGIS)
+- Compétences en Langages de programmation scientifiques (SQL, R) pour la gestion et le traitement de données, notamment spatiales
+- Maîtrise des normes pour l’interopérabilité de données spatiales (standards OGC), maîtrise des formats de référence pour les métadonnées et les données biologiques spatialisées (Darwin Core, EML)
+- Connaissance des standard de service web dédiés à la publication de données spatialisées (CSW, WMS, WFS/WCS)
+- Développement de chaines de traitement de données complexes (extraction, transformation, modélisation, visualisation, valorisation FAIR)
+
+N/A
+
+### Science des données :
+
+- Extraction et combinaison de données hétérogènes multi-sources et multi-échelles
+- Modélisation statistique paramétrique (modèles linéaires mixtes généralisés) (modélisation explicative)
+- Modélisation statistique non-paramétrique (*machine learning*) (forêts aléatoires, XGBoost, SVM, etc.) (modélisation exploratoire et prédictive)
+- Maitrise des outils d'interprétation des modèles de *machine learning* (*interpretable machine learning*)
+
+N/A
+
+### Géomatique :
+
+- Cartographie (QGIS, R)
+- Télédétection (OTB, SAGA, GRASS GIS, R)
+- Recueil de données terrain (QField)
+
+N/A
+
+## Publications scientifiques à comité de lecture, auteur principal {data-icon="book"}
+
+```{r print-pub}
+format_bib("bib/pubs_firstauthor.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+
+## Jeux de données scientifiques {data-icon="book"}
+
+###
+
+- Soma DD, Zogo B, **Taconet P** et al. (2023). **Anopheles Collections in the Health Districts of Korhogo (Côte d’Ivoire) and Diébougou (Burkina Faso) (2016–2018)**. GBIF. <https://doi.org/10.15468/V8FVYN>
+- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Korhogo, Côte d'Ivoire, 2018**. DataSuds. <https://doi.org/10.23708/MTF4S8>.
+- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Diébougou, Burkina Faso, 2018**. DataSuds. <https://doi.org/10.23708/ARSJNB>.
+- Kouassi, A., **Taconet, P.** et al. (2023). **Land use land cover ultra-high-spatial-resolution digital maps (5-cm) for 4 urban districts of the city of Bouaké (Air France, Belleville, Koko, Sossoribougou), center Côte d'Ivoire, 2020**. DataSuds. <https://doi.org/10.23708/PUYNSG>.
+- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global monthly catch of tuna, tuna-like and shark species (1950-2015) aggregated by 1° or 5° squares (IRD level 2)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1164128>.
+- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global annual catch of tuna, tuna-like and shark species (1918-2015) (IRD level 0)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1165992>.
+
+N/A
+
+## Librairies R
+
+###
+
+- `modisfast` : Fast and efficient access to MODIS data (and several other Earth datacubes sources) with R (2024) [[GitHub]](https://github.com/ptaconet/modisfast) [[HAL]](https://hal.science/hal-04603903)
+- `rtunaatlas` : Scripts to handle the public domain datasets of the 5 tuna Regional Fisheries Management Organizations (2017) [[GitHub]](https://github.com/ptaconet/rtunaatlas) [[Zenodo]](https://doi.org/10.5281/zenodo.1218172)
+
+N/A
+
+## Actes de colloque {data-icon="file-alt"}
+
+```{r print-tech}
+format_bib("bib/tech.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+## Communications à des colloques internationaux et nationaux {data-icon="users"}
+
+```{r print-conf}
+format_bib("bib/conf.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  separate(eventdate, c("year", "month", "day", NA, NA, "end_day"),
+           fill = "right", extra = "drop", convert = TRUE) %>%
+  arrange(desc(year), desc(month), desc(day), desc(end_day), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+## Publications scientifiques à comité de lecture, co-auteur {data-icon="book"}
+
+```{r print-pub2}
+format_bib("bib/pubs_coauthor.bib") %>%
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\{|\\}", "")),
+         author = map_chr(author, all_authors),
+         year = as.integer(year),
+         month = as.integer(month)) %>%
+  arrange(desc(year), desc(month), author) %>%
+  group_by(year) %>%
+  mutate(count = 1:n()) %>%
+  ungroup() %>%
+  mutate(year = case_when(count != 1 ~ "N/A", TRUE ~ as.character(year))) %>%
+  glue_data(
+    "### {title}",
+    "\n\n",
+    "{citation}",
+    "\n\n",
+    "N/A",
+    "\n\n",
+    "{year}",
+    "\n\n\n"
+  )
+```
+
+## Autres productions et activités scientifiques
+
+### Enseignement, Formation
+
+- 2 x Vacations enseignement à l'[[école d'été de l'ISSPAM]](https://www.univ-amu.fr/fr/public/ecole-dete-de-lisspam-2024-methodes-et-enjeux-en-sciences-de-la-sante-publique) - module VALDON "Spatialisation de la santé dans les Suds : quelle valeur pour quelle donnée ?"  (Marseille, 2023 & 2024) (2 x 3 heures)
+- Vacations enseignement en géomatique à l'Université Paul-Valéry-Montpellier 3 / Master 2 "Geomatique" (Montpellier, 2023) (6 heures)
+- Vacations enseignement en géomatique à l'Université Paul-Valéry-Montpellier 3 / Master 1 "Gestion de l'Environnement" (Montpellier, 2022) (6 heures)
+- Formation : "Initiation aux Systèmes d’information Géographique et à la Télédetection avec QGIS et Orpheo Toolbox" (Bobo-Dioulasso, 2019). 25 heures, cible : étudiants de Master 2 et doctorants
+
+N/A
+
+### Supports pédagogiques
+
+- TD SIG niveau avancé : Modélisation des dynamiques spatio-temporelles des abondances des vecteurs du paludisme au Burkina Faso avec le langage de programmation R. (2023) [[PDF]](https://doi.org/10.5281/zenodo.7635937)
+- TD SIG niveau intermédiaire : Priorisation des zones pour la rénovation énergétique du bâti dans l'agglomération Montpellier Méditerranée Métropole par analyse multicritère spatialisée. (2022) [[PDF]](https://doi.org/10.5281/zenodo.7380029)
+- Support pédagogique : Initiation à la télédétection spatiale sur logiciel libre. (2019) [[PDF]](https://doi.org/10.5281/zenodo.7224864)
+
+N/A
+
+### Animation scientifique
+
+- Co-organisation du séminaire ***"Models in Ecology and Evolution"***. (Montpellier, 2022) 40 participants. [[site internet]](https://meeseminar2022.netlify.app/about/)
+
+N/A
+
+### Relectures de publications scientifiques
+
+-   International Journal of Health Geographics (2024)
+-   PLOS Global Public Health (2024)
+-   Parasitology Research (2024)
+-   GigaByte Journal (data paper) (2023) x 2 data papers
+-   Scientific Reports - Nature (2023)
+-   Journal of Applied Ecology (2023)
+-   PLOS ONE (2023)
+-   Asian Pacific Journal of Tropical Medicine (2023)
+-   Infectious Diseases of Poverty (2022)
+-   ICES Journal of Marine Science (2017)
+
+N/A
+
+### Encadrement
+
+- Tenimba Diarra, co-encadrement, stage de Master 2 (Université de Montpellier, Master Données Santé, Biostatistiques). (Montpellier, 2022). Sujet de stage : *Modélisation de l’agressivité horaire des moustiques vecteurs du paludisme en fonction de variables micro-environnementales et méthodes de lutte antivectorielle*
+- Chloé Dalleau, encadrement principal, stage de fin d'étude d'ingénieur (Montpellier SupAgro, spécialité AgroTIC). (Sète, 2017). Sujet de stage : *Proposition de méthodes de rasterisation des données de la pêcherie thonière*
+
+N/A
+
+### Webinaires
+
+- ***Managing tuna fisheries data at a global scale : the Tuna Atlas VRE***. (2018) Webinaire délivré dans le cadre du projet européen H2020 BlueBRIDGE. [[Vidéo]](https://www.youtube.com/watch?v=ZgxJO-0wXAk&t=1807s)
+
+N/A
+
+### Communications à des séminaires d'unité ou équivalents
+
+- ***Expliquer, prédire, ou décrire ? La modélisation statistique sous toutes ses formes*** (2023, Juin). Groupe Biostats, UMR MIVEGEC, Montpellier [[présentation]](https://drive.google.com/file/d/1vg-wVcK4Xia617EHJFuk_Eml75opPFgm/view?usp=sharing)
+- ***Presentation R package `thesisdown`*** (2022, Avril). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://drive.google.com/file/d/1vg-wVcK4Xia617EHJFuk_Eml75opPFgm/view?usp=sharing)
+- ***Modélisation des résistances comportementales des vecteurs du paludisme en conditions de terrain***. (2021, Novembre). Groupe Comportement, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/1W_Ip6IqCCF2OiN4IaJbVMxdqEzJUeYJG7iLTZNOYXkY/edit?usp=sharing)
+- ***La contribution FAO/IRD sur les atlas thoniers: vers un meilleur usage des données de pêche***. (2020, Novembre). Bioinformelles, UMR MIVEGEC, Montpellier [[présentation]](https://docs.google.com/presentation/d/17qX84CEtgBKsMt4O5Udrw239yUQPuB6coch8MSaXkrE/edit?usp=sharing)
+- ***Quelques bonnes pratiques pour la gestion des données de recherche***. (2019, Décembre). Workshop de l’équipe Infectivité de l’Unité Paludisme, Institut de Recherche en Sciences de la Santé (IRSS), Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1ibl7yAOJrW7eRZ17MECV7rf3B-2zkBNFW-Btg_oJgKQ/edit?usp=sharing)
+- ***Science ouverte : petit tour d’horizon***. (2019, Octobre). Conférences des vendredi de l'IRSS, Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1VM8AbczEYPjPGDbnqVwDLQ8kOgYlYBm0BicTacCEYpU/edit?usp=sharing)
+- ***Improve the collection of field geographic data with QField for QGIS***. (2019, Mars). Institut de l'Environnement et de Recherches Agricoles (INERA), Bobo-Dioulasso [[présentation]](https://docs.google.com/presentation/d/1aB8Wt_j6O5fYBJmtcI-Dwl7Z4TWFLqyEFh9PjbDfF44/edit?usp=sharing)
+- ***La contribution IRD / FAO sur les atlas thoniers : vers  un meilleur usage des données de pêche***. (2017, Novembre). Conférences des jeudi de l’UMR Marbec, Sète [[présentation]](https://docs.google.com/presentation/d/12bvPeuH2JakyKtNK5e1AE0WIgYnlXTPOpiBln1mzeZs/edit?usp=sharing)
+- ***Données / outils / produits : cas de l’observatoire  thonier***. (2016, Novembre). Module d’enseignement sur l’approche écosystémique des ressources marines exploitées, Sète.
+- ***Global database and common toolbox for tuna fisheries*** (2016, Décembre). Conférences des jeudi de l’UMR Marbec, Sète
+
+N/A
+
+### Contributions à des projets annexes
+
+- Projet ***COheSIoN*** (MIVEGEC) : cartographie d’occupation du sol à partir d’images de drône (recyclage de codes R générés pour les besoins de ma thèse)
+- Projet ***MovBio*** (MIVEGEC / CEFE) : développement d’un algorithme de classification et dénombrement automatique de graines (support photographique)
+- Projet ***Atlas thonier français*** (IRD MARBEC). Recyclage du travail de l'atlas thonier mondial (codes R, modèle de base de données) pour les mêmes besoins sur les données des pêcheries thonières françaises
+
+N/A
+

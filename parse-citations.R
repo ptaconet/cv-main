@@ -58,8 +58,10 @@ cite_article <- function(ref_info) {
                   across(where(is.character),
                          ~stringr::str_replace_all(.x, "\\{|\\}", ""))) %>%
     glue::glue_data(
-      "{full_author} ({year}). {title}{ifelse(is.na(titleaddon), '', paste0(' [', titleaddon, ']'))}. *{journal}{ifelse(is.na(volume), '', paste0(', ', volume))}*{ifelse(is.na(number), '', paste0('(', number, ')'))}{ifelse(is.na(pages), '', paste0(', ', pages))}. https://doi.org/{doi}"
-    )
+      #"{full_author} ({year}). {title}{ifelse(is.na(titleaddon), '', paste0(' [', titleaddon, ']'))}. *{journal}{ifelse(is.na(volume), '', paste0(', ', volume))}*{ifelse(is.na(number), '', paste0('(', number, ')'))}{ifelse(is.na(pages), '', paste0(', ', pages))}. https://doi.org/{doi}"
+      "{full_author} ({year}) {ifelse(is.na(titleaddon), '', paste0(' [', titleaddon, ']'))}. ***{journal}{ifelse(is.na(volume), '', paste0(', ', volume))}***{ifelse(is.na(number), '', paste0('(', number, ')'))}{ifelse(is.na(pages), '', paste0(', ', pages))}. https://doi.org/{doi}"
+      
+      )
 }
 
 cite_incollection <- function(ref_info) {
@@ -98,7 +100,7 @@ cite_thesis <- function(ref_info) {
                          ~stringr::str_replace_all(.x, "\\{|\\}", ""))) %>%
     glue::glue_data(
      # "{full_author} ({year}). *{title}*{ifelse(is.na(type), '', paste0(' (', type, ' No. ', number, ')'))} [{titleaddon}]. {publisher}.{ifelse(is.na(doi), '', paste0(' https://doi.org/', doi))}"
-       "{full_author} ({year}). *{title}*{ifelse(is.na(type), '', paste0(' (', type, ' No. ', number, ')'))} [{titleaddon}]. {publisher}.{ifelse(is.na(doi), '', paste0(' ',doi))}"
+       "{full_author} ({year}). {ifelse(is.na(type), '', paste0(' (', type, ' No. ', number, ')'))} [{titleaddon}]. {publisher}.{ifelse(is.na(doi), '', paste0(' ',doi))}"
       
       )
 }
@@ -193,7 +195,7 @@ cite_report <- function(ref_info) {
   
   cite <- cite_info %>%
     glue::glue_data(
-      "{full_author} ({year}). *{full_title}* {publisher}."
+      "{full_author} ({year}). {publisher}."
     )
   
   if (!is.na(cite_info$doi)) {
