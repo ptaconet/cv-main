@@ -180,8 +180,8 @@ edu_data %>%
 
 ### Langages de programmation:
 
-- **R : confirmé** (voir [dépôt GitHub](https://github.com/ptaconet)). Libraires types maîtrisées : développement de librairies R ([`usethis`](https://cran.r-project.org/web/packages/usethis/index.html)), manipulation de données tabulaires ([`dplyr`](https://cran.r-project.org/web/packages/dplyr/index.html), [`tidyr`](https://cran.r-project.org/web/packages/tidyr/index.html), [`lubridate`](https://cran.r-project.org/web/packages/lubridate/index.html), [`stringr`](https://cran.r-project.org/web/packages/stringr/index.html), [`tibble`](https://cran.r-project.org/web/packages/tibble/index.html), [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html)), manipulation de données spatiales ([`sf`](https://cran.r-project.org/web/packages/sf/index.html), [`terra`](https://cran.r-project.org/web/packages/terra/index.html), [`stars`](https://cran.r-project.org/web/packages/stars/index.html)), visualisation ([`ggplot2`](https://cran.r-project.org/web/packages/ggplot2/index.html), [`patchwork`](https://cran.r-project.org/web/packages/patchwork/index.html), [`GGally`](https://cran.r-project.org/web/packages/GGally/index.html)), cartographie ([`ggmap`](https://cran.r-project.org/web/packages/ggmap/index.html), [`tmap`](https://cran.r-project.org/web/packages/tmap/index.html)), programmation fonctionnelle ([`purrr`](https://cran.r-project.org/web/packages/purrr/index.html)), gestion de bases de données ([`DBI`](https://cran.r-project.org/web/packages/DBI/index.html)), biostatistiques ([`glmmTMB`](https://cran.r-project.org/web/packages/glmmTMB/index.html)), machine learning ([`caret`](https://cran.r-project.org/web/packages/caret/index.html), [`ranger`](https://cran.r-project.org/web/packages/ranger/index.html), [`randomForest`](https://cran.r-project.org/web/packages/randomForest/index.html)), *interpretable machine learning* ([`iml`](https://cran.r-project.org/web/packages/iml/index.html), [`pdp`](https://cran.r-project.org/web/packages/pdp/index.html), [`vip`](https://cran.r-project.org/web/packages/vip/index.html)), programmation lettrée ([`bookdown`](https://cran.r-project.org/web/packages/bookdown/index.html)), parallélisation ([`furrr`](https://cran.r-project.org/web/packages/furrr/index.html)).
-- **R Markdown : confirmé** (voir [manuscrit de thèse](https://github.com/ptaconet/phd_thesis) et [supports pédagogiques rédigés](https://doi.org/10.5281/zenodo.7380029))
+- **R : confirmé** (voir [dépôt GitHub](https://github.com/ptaconet)). Libraires types maîtrisées : développement de librairies R ([`usethis`](https://cran.r-project.org/web/packages/usethis/index.html),[`testthat`](https://cran.r-project.org/web/packages/testthat/index.html)), manipulation de données tabulaires ([`dplyr`](https://cran.r-project.org/web/packages/dplyr/index.html), [`tidyr`](https://cran.r-project.org/web/packages/tidyr/index.html), [`lubridate`](https://cran.r-project.org/web/packages/lubridate/index.html), [`stringr`](https://cran.r-project.org/web/packages/stringr/index.html), [`tibble`](https://cran.r-project.org/web/packages/tibble/index.html), [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html)), manipulation de données spatiales ([`sf`](https://cran.r-project.org/web/packages/sf/index.html), [`terra`](https://cran.r-project.org/web/packages/terra/index.html), [`stars`](https://cran.r-project.org/web/packages/stars/index.html)), visualisation ([`ggplot2`](https://cran.r-project.org/web/packages/ggplot2/index.html), [`patchwork`](https://cran.r-project.org/web/packages/patchwork/index.html), [`GGally`](https://cran.r-project.org/web/packages/GGally/index.html)), cartographie ([`ggmap`](https://cran.r-project.org/web/packages/ggmap/index.html), [`tmap`](https://cran.r-project.org/web/packages/tmap/index.html), [`mapview`](https://cran.r-project.org/web/packages/mapview/index.html)), programmation fonctionnelle ([`purrr`](https://cran.r-project.org/web/packages/purrr/index.html)), gestion de bases de données ([`DBI`](https://cran.r-project.org/web/packages/DBI/index.html)), biostatistiques ([`glmmTMB`](https://cran.r-project.org/web/packages/glmmTMB/index.html)), machine learning ([`caret`](https://cran.r-project.org/web/packages/caret/index.html), [`ranger`](https://cran.r-project.org/web/packages/ranger/index.html)), *interpretable machine learning* ([`iml`](https://cran.r-project.org/web/packages/iml/index.html), [`pdp`](https://cran.r-project.org/web/packages/pdp/index.html), [`vip`](https://cran.r-project.org/web/packages/vip/index.html)), programmation lettrée ([`rmarkdown`](https://cran.r-project.org/web/packages/rmarkdown/index.html), [`bookdown`](https://cran.r-project.org/web/packages/bookdown/index.html)), parallélisation ([`furrr`](https://cran.r-project.org/web/packages/furrr/index.html)).
+- **R Markdown : confirmé** (voir [manuscrit de thèse](https://github.com/ptaconet/phd_thesis) rédigé avec [`thesisdown`](https://github.com/ismayc/thesisdown) et [supports pédagogiques](https://doi.org/10.5281/zenodo.7380029))
 - SQL : confirmé (voir par exemple [ces travaux](https://github.com/ptaconet/r_sql_datawarehouse))
 - PHP : intermédiaire
 - Bash : intermédiaire
@@ -191,7 +191,7 @@ N/A
 ### Ingéniérie des données:
 
 - **Langages de programmation scientifiques (SQL, R)** pour la gestion et le traitement de données, notamment spatiales
-- Développement de **chaines de traitement de données complexes** (extraction, transformation, modélisation, visualisation, valorisation FAIR)
+- Développement de **chaînes de traitement de données complexes** pour la transparence et la reproductibilité (extraction, transformation, modélisation, visualisation, valorisation FAIR)
 - Versionnage des codes et **forges logicielles (Git)**
 - Conception et développement de **bases de données géographiques** et d'infrastructures de données spatiales dans le domaine de la bio-écologie et de l'épidémiologie (**PostgreSQL + PostGIS**, **Geopackage**)
 - Maîtrise des **normes web pour l’interopérabilité de données spatiales (standards OGC)**, maîtrise des formats de référence pour les métadonnées et les données de biodiversité spatialisées (Darwin Core, EML)
@@ -202,7 +202,7 @@ N/A
 
 - **Extraction et combinaison de données hétérogènes, multi-sources, multi-échelles**
 - Modélisation statistique : **modèles linéaires mixtes généralisés**
-- ***Machine learning*** (forêts aléatoires, XGBoost SVM, etc.)
+- ***Machine learning*** (forêts aléatoires, XGBoost, SVM, etc.)
 - Interprétation des modèles de *machine learning* (***explainable machine learning***)
 - **Fouille de données**
 - **Visualisation de données**
@@ -212,10 +212,34 @@ N/A
 ### Géomatique :
 
 - **Cartographie** (QGIS, R)
-- Traitement d'images (**télédétection**), cubes spatio-temporels d'observation de la Terre (OTB, SAGA, GRASS GIS, R)
+- Traitement d'images (**télédétection spatiale**), cubes spatio-temporels d'observation de la Terre (OTB, SAGA, GRASS GIS, R)
 - Recueil de données terrain (QField)
 
 N/A
+
+## Jeux de données scientifiques {data-icon="book"}
+
+###
+
+- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Korhogo, Côte d'Ivoire, 2018**. DataSuds. <https://doi.org/10.23708/MTF4S8>.
+- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Diébougou, Burkina Faso, 2018**. DataSuds. <https://doi.org/10.23708/ARSJNB>.
+- Soma DD, Zogo B, **Taconet P** et al. (2023). **Anopheles Collections in the Health Districts of Korhogo (Côte d’Ivoire) and Diébougou (Burkina Faso) (2016–2018)**. GBIF. <https://doi.org/10.15468/V8FVYN>
+- Kouassi, A., **Taconet, P.** et al. (2023). **Land use land cover ultra-high-spatial-resolution digital maps (5-cm) for 4 urban districts of the city of Bouaké (Air France, Belleville, Koko, Sossoribougou), center Côte d'Ivoire, 2020**. DataSuds. <https://doi.org/10.23708/PUYNSG>.
+- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global monthly catch of tuna, tuna-like and shark species (1950-2015) aggregated by 1° or 5° squares (IRD level 2)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1164128>.
+- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global annual catch of tuna, tuna-like and shark species (1918-2015) (IRD level 0)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1165992>.
+
+N/A
+
+## Librairies et chaînes de traitement R
+
+###
+
+- **Paul Taconet**, Nicolas Moiroux (2024). **`modisfast`** : fast and efficient access to MODIS data with R, [[GitHub]](https://github.com/ptaconet/modisfast) [[HAL]](https://hal.science/hal-04603903)
+- **Paul Taconet**, Chloé Dalleau (2018). **`rtunaatlas`** : R package to handle the public domain datasets of the 5 tuna Regional Fisheries Management Organizations [[GitHub]](https://github.com/ptaconet/rtunaatlas) [[Zenodo]](https://doi.org/10.5281/zenodo.1218172)
+- **Paul Taconet**, 2018. **`rtunaatlas_scripts`** : R scripts to setup and update the Global and the French Tuna Atlases [[GitHub]](https://github.com/ptaconet/rtunaatlas_scripts)
+
+N/A
+
 
 ## Publications scientifiques à comité de lecture, auteur principal {data-icon="book"}
 
@@ -266,29 +290,6 @@ format_bib("bib/pubs_coauthor.bib") %>%
     "\n\n\n"
   )
 ```
-
-## Jeux de données scientifiques {data-icon="book"}
-
-###
-
-- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Korhogo, Côte d'Ivoire, 2018**. DataSuds. <https://doi.org/10.23708/MTF4S8>.
-- **Taconet, P.** et al. (2023). **Land use land cover very high resolution map (1.5-m) for the area of Diébougou, Burkina Faso, 2018**. DataSuds. <https://doi.org/10.23708/ARSJNB>.
-- Soma DD, Zogo B, **Taconet P** et al. (2023). **Anopheles Collections in the Health Districts of Korhogo (Côte d’Ivoire) and Diébougou (Burkina Faso) (2016–2018)**. GBIF. <https://doi.org/10.15468/V8FVYN>
-- Kouassi, A., **Taconet, P.** et al. (2023). **Land use land cover ultra-high-spatial-resolution digital maps (5-cm) for 4 urban districts of the city of Bouaké (Air France, Belleville, Koko, Sossoribougou), center Côte d'Ivoire, 2020**. DataSuds. <https://doi.org/10.23708/PUYNSG>.
-- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global monthly catch of tuna, tuna-like and shark species (1950-2015) aggregated by 1° or 5° squares (IRD level 2)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1164128>.
-- **Taconet, P.**, Chassot, E., Barde, J. (2018). **Global annual catch of tuna, tuna-like and shark species (1918-2015) (IRD level 0)** [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.1165992>.
-
-N/A
-
-## Librairies R
-
-###
-
-- **Paul Taconet**, Nicolas Moiroux (2024). **`modisfast`** : fast and efficient access to MODIS data with R, [[GitHub]](https://github.com/ptaconet/modisfast) [[HAL]](https://hal.science/hal-04603903)
-- **Paul Taconet**, Chloé Dalleau (2018). **`rtunaatlas`** : R package to handle the public domain datasets of the 5 tuna Regional Fisheries Management Organizations [[GitHub]](https://github.com/ptaconet/rtunaatlas) [[Zenodo]](https://doi.org/10.5281/zenodo.1218172)
-- **Paul Taconet**, 2018. **`rtunaatlas_scripts`** : R scripts to setup and update the Global and the French Tuna Atlases [[GitHub]](https://github.com/ptaconet/rtunaatlas_scripts)
-
-N/A
 
 ## Actes de colloque {data-icon="file-alt"}
 
@@ -355,7 +356,7 @@ N/A
 
 ### Supports pédagogiques
 
-- TD SIG niveau avancé : Modélisation des dynamiques spatio-temporelles des abondances des vecteurs du paludisme au Burkina Faso avec le langage de programmation R. (2023) [[PDF]](https://doi.org/10.5281/zenodo.7635937)
+- TD SIG niveau avancé : Modélisation des dynamiques spatio-temporelles des abondances des vecteurs du paludisme en Côte d'Ivoire avec le langage de programmation R. (2024) [[PDF]](https://doi.org/10.5281/zenodo.12532184)
 - TD SIG niveau intermédiaire : Priorisation des zones pour la rénovation énergétique du bâti dans l'agglomération Montpellier Méditerranée Métropole par analyse multicritère spatialisée. (2022) [[PDF]](https://doi.org/10.5281/zenodo.7380029)
 - Support pédagogique : Initiation à la télédétection spatiale sur logiciel libre. (2019) [[PDF]](https://doi.org/10.5281/zenodo.7224864)
 
@@ -420,6 +421,10 @@ N/A
 
 ### Codes informatiques divers
 
+- ***Taconet, P. (2024).*** *R scripts developed in the frame of the V2MOC projet for spatio-temporal modeling of mosquito abundance in Montpellier using big data* https://github.com/ptaconet/modeling_vector_mtp
+- ***Taconet, P. (2022).*** Codes R développés dans le cadre de la thèse de doctorat de Paul Taconet. Zenodo. https://doi.org/10.5281/zenodo.6334110
+- ***Taconet, P. (2019).*** *R functions to download & import efficiently various spatio-temporal data* https://github.com/ptaconet/eodataflow
 - ***Taconet, P. (2015).*** Codes informatiques de la première base de données relationelle de la Réserve Naturelle Nationale des Terres australes françaises. Zenodo. https://doi.org/10.5281/zenodo.11769850
+
 
 N/A
